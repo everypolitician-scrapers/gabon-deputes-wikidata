@@ -3,5 +3,7 @@
 
 require 'wikidata/fetcher'
 
-ids = EveryPolitician::Wikidata.wdq('claim[39:19798976]')
-EveryPolitician::Wikidata.scrape_wikidata(ids: ids, output: false)
+sparq = 'SELECT ?item WHERE { ?item wdt:P39 wd:Q19798976 . }'
+ids = EveryPolitician::Wikidata.sparql(sparq)
+
+EveryPolitician::Wikidata.scrape_wikidata(ids: ids)
